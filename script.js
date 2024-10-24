@@ -52,7 +52,7 @@ const checkUsername = () => {
     if (!isRequired(usuarioVal)) {
         showError(usuario, 'Usuário não pode ficar em branco.');
     } else if (!isBetween(usuarioVal.lenght, min, max)) {
-        showError(usuario, 'Usuário deve ter entre ${min} e ${max} caracteres');
+        showError(usuario, `Usuário deve ter entre ${min} e ${max} caracteres.`);
     } else {
         showSuccess(usuario);
         valid = true;
