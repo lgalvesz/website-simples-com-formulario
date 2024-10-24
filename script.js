@@ -16,7 +16,7 @@ const showError = (input, message) => {
     const error = formField.querySelector('small');
     error.textContent = message;
 
-}
+};
 
 const showSuccess = (input, message) => {
     const formField = input.parentElement;
@@ -24,8 +24,8 @@ const showSuccess = (input, message) => {
     formField.classList.remove('error');
     formField.classList.add('success');
 
-    const error = formField.querySelector('small');
-    error.textContent = '';
+    const success = formField.querySelector('small');
+    success.textContent = '';
     
 }
 
@@ -83,7 +83,7 @@ const checkPassword = () => {
 
     if (!isRequired(senhaVal)) {
         showError(senha, 'Senha não pode ficar em branco.');
-    } else if (!isPasswordSecure(emailVal)) {
+    } else if (!isPasswordSecure(senhaVal)) {
         showError(senha, 'Senha tem que ter no mínimo 8 caracteres que incluem pelo menos 1 caractere minúsculo, 1 caractere maiúsculo, 1 número e 1 caractere especial (!@#$%^&*)');
     } else {
         showSuccess(senha);
@@ -105,7 +105,19 @@ toggleConfirmacaoSenha.addEventListener("click", function () {
 });
 
 const checkConfirmPassword = () => {
-    
+    let valid = false;
+    const confirmacaoSenhaVal = confirmacaoSenha.value.trim();
+    const senhaVal = senha.value.trim();
+
+    if (!isRequired(confirmacaoSenhaVal)) {
+        showError(confirmacaoSenha, 'Confirmação de senha não pode ficar em branco.');
+    } else if (senhaVal !== confirmacaoSenhaVal) {
+        showError(confirmacaoSenha, 'Senha e confirmação de senha são diferentes.');
+    } else {
+        showSuccess(confirmacaoSenha);
+        valid = true;
+    }
+    return valid;
 }
 
 form.addEventListener('submit', function (e) {

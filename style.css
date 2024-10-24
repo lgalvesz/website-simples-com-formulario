@@ -72,11 +72,11 @@ body {
     margin-bottom: 5px;
 }
 
-.campo-formulario .error input {
+.campo-formulario.error input {
     border-color: var(--error-color);
 }
 
-.campo-formulario .success input {
+.campo-formulario.success input {
     border-color: var(--success-color);
 }
 
